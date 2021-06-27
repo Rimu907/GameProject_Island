@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1520816272 source:c:\users\90730\desktop\opencv task\opencv task\example code\ct\main.cpp
+	<stdio.h>
+	<iostream>
+	"opencv2/core.hpp"
+	"opencv2/imgproc.hpp"
+	"opencv2/opencv.hpp"
+
+1520816372 source:c:\users\90730\desktop\opencv task\opencv task\example code\h61aee-pre work-4311495\colour identify-4311495\main.cpp
+	<stdio.h>
+	<iostream>
+	"opencv2/core.hpp"
+	"opencv2/imgproc.hpp"
+	"opencv2/opencv.hpp"
+

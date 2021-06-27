@@ -1,0 +1,1106 @@
+
+
+Microchip MPLAB XC8 Assembler V2.10 build 88905656 
+                                                                                               Tue May 05 02:00:19 2020
+
+Microchip MPLAB XC8 C Compiler v2.10 (Free license) build 20190730164152 Og1 
+     1                           	processor	16F887
+     2                           	opt	pw 120
+     3                           	opt	flic
+     4                           	psect	idataBANK0,global,class=CODE,delta=2
+     5                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     6                           	psect	dataBANK0,global,class=BANK0,space=1,delta=1
+     7                           	psect	inittext,global,class=CODE,delta=2
+     8                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+     9                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1
+    10                           	psect	maintext,global,class=CODE,split=1,delta=2
+    11                           	psect	text1,local,class=CODE,merge=1,delta=2
+    12                           	psect	text2,local,class=CODE,merge=1,delta=2
+    13                           	psect	text3,local,class=CODE,merge=1,delta=2
+    14                           	dabs	1,0x7E,2
+    15  0000                     
+    16                           ; Version 2.10
+    17                           ; Generated 31/07/2019 GMT
+    18                           ; 
+    19                           ; Copyright © 2019, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    20                           ; All rights reserved.
+    21                           ; 
+    22                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    23                           ; 
+    24                           ; Redistribution and use in source and binary forms, with or without modification, are
+    25                           ; permitted provided that the following conditions are met:
+    26                           ; 
+    27                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    28                           ;        conditions and the following disclaimer.
+    29                           ; 
+    30                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    31                           ;        of conditions and the following disclaimer in the documentation and/or other
+    32                           ;        materials provided with the distribution.
+    33                           ; 
+    34                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    35                           ;        software without specific prior written permission.
+    36                           ; 
+    37                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    38                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    39                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    40                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    41                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    42                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    43                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    44                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    45                           ; 
+    46                           ; 
+    47                           ; Code-generator required, PIC16F887 Definitions
+    48                           ; 
+    49                           ; SFR Addresses
+    50  0000                     	;# 
+    51  0001                     	;# 
+    52  0002                     	;# 
+    53  0003                     	;# 
+    54  0004                     	;# 
+    55  0005                     	;# 
+    56  0006                     	;# 
+    57  0007                     	;# 
+    58  0008                     	;# 
+    59  0009                     	;# 
+    60  000A                     	;# 
+    61  000B                     	;# 
+    62  000C                     	;# 
+    63  000D                     	;# 
+    64  000E                     	;# 
+    65  000E                     	;# 
+    66  000F                     	;# 
+    67  0010                     	;# 
+    68  0011                     	;# 
+    69  0012                     	;# 
+    70  0013                     	;# 
+    71  0014                     	;# 
+    72  0015                     	;# 
+    73  0015                     	;# 
+    74  0016                     	;# 
+    75  0017                     	;# 
+    76  0018                     	;# 
+    77  0019                     	;# 
+    78  001A                     	;# 
+    79  001B                     	;# 
+    80  001B                     	;# 
+    81  001C                     	;# 
+    82  001D                     	;# 
+    83  001E                     	;# 
+    84  001F                     	;# 
+    85  0081                     	;# 
+    86  0085                     	;# 
+    87  0086                     	;# 
+    88  0087                     	;# 
+    89  0088                     	;# 
+    90  0089                     	;# 
+    91  008C                     	;# 
+    92  008D                     	;# 
+    93  008E                     	;# 
+    94  008F                     	;# 
+    95  0090                     	;# 
+    96  0091                     	;# 
+    97  0092                     	;# 
+    98  0093                     	;# 
+    99  0093                     	;# 
+   100  0093                     	;# 
+   101  0094                     	;# 
+   102  0095                     	;# 
+   103  0096                     	;# 
+   104  0097                     	;# 
+   105  0098                     	;# 
+   106  0099                     	;# 
+   107  009A                     	;# 
+   108  009B                     	;# 
+   109  009C                     	;# 
+   110  009D                     	;# 
+   111  009E                     	;# 
+   112  009F                     	;# 
+   113  0105                     	;# 
+   114  0107                     	;# 
+   115  0108                     	;# 
+   116  0109                     	;# 
+   117  010C                     	;# 
+   118  010C                     	;# 
+   119  010D                     	;# 
+   120  010E                     	;# 
+   121  010F                     	;# 
+   122  0185                     	;# 
+   123  0187                     	;# 
+   124  0188                     	;# 
+   125  0189                     	;# 
+   126  018C                     	;# 
+   127  018D                     	;# 
+   128  0000                     	;# 
+   129  0001                     	;# 
+   130  0002                     	;# 
+   131  0003                     	;# 
+   132  0004                     	;# 
+   133  0005                     	;# 
+   134  0006                     	;# 
+   135  0007                     	;# 
+   136  0008                     	;# 
+   137  0009                     	;# 
+   138  000A                     	;# 
+   139  000B                     	;# 
+   140  000C                     	;# 
+   141  000D                     	;# 
+   142  000E                     	;# 
+   143  000E                     	;# 
+   144  000F                     	;# 
+   145  0010                     	;# 
+   146  0011                     	;# 
+   147  0012                     	;# 
+   148  0013                     	;# 
+   149  0014                     	;# 
+   150  0015                     	;# 
+   151  0015                     	;# 
+   152  0016                     	;# 
+   153  0017                     	;# 
+   154  0018                     	;# 
+   155  0019                     	;# 
+   156  001A                     	;# 
+   157  001B                     	;# 
+   158  001B                     	;# 
+   159  001C                     	;# 
+   160  001D                     	;# 
+   161  001E                     	;# 
+   162  001F                     	;# 
+   163  0081                     	;# 
+   164  0085                     	;# 
+   165  0086                     	;# 
+   166  0087                     	;# 
+   167  0088                     	;# 
+   168  0089                     	;# 
+   169  008C                     	;# 
+   170  008D                     	;# 
+   171  008E                     	;# 
+   172  008F                     	;# 
+   173  0090                     	;# 
+   174  0091                     	;# 
+   175  0092                     	;# 
+   176  0093                     	;# 
+   177  0093                     	;# 
+   178  0093                     	;# 
+   179  0094                     	;# 
+   180  0095                     	;# 
+   181  0096                     	;# 
+   182  0097                     	;# 
+   183  0098                     	;# 
+   184  0099                     	;# 
+   185  009A                     	;# 
+   186  009B                     	;# 
+   187  009C                     	;# 
+   188  009D                     	;# 
+   189  009E                     	;# 
+   190  009F                     	;# 
+   191  0105                     	;# 
+   192  0107                     	;# 
+   193  0108                     	;# 
+   194  0109                     	;# 
+   195  010C                     	;# 
+   196  010C                     	;# 
+   197  010D                     	;# 
+   198  010E                     	;# 
+   199  010F                     	;# 
+   200  0185                     	;# 
+   201  0187                     	;# 
+   202  0188                     	;# 
+   203  0189                     	;# 
+   204  018C                     	;# 
+   205  018D                     	;# 
+   206                           
+   207                           	psect	idataBANK0
+   208  06C2                     __pidataBANK0:	
+   209                           
+   210                           ;initializer for main@F1277
+   211  06C2  3400               	retlw	0
+   212  06C3  3401               	retlw	1
+   213  06C4  3402               	retlw	2
+   214  06C5  3403               	retlw	3
+   215  06C6  3405               	retlw	5
+   216  06C7  3404               	retlw	4
+   217  06C8  3407               	retlw	7
+   218  06C9  3406               	retlw	6
+   219  06CA  340A               	retlw	10
+   220  06CB  340B               	retlw	11
+   221  06CC  3408               	retlw	8
+   222  06CD  3409               	retlw	9
+   223  06CE  340F               	retlw	15
+   224  06CF  340E               	retlw	14
+   225  06D0  340D               	retlw	13
+   226  06D1  340C               	retlw	12
+   227  0009                     _PORTE	set	9
+   228  0007                     _PORTC	set	7
+   229  0005                     _PORTA	set	5
+   230  0008                     _PORTD	set	8
+   231  0006                     _PORTB	set	6
+   232  001E                     _ADRESH	set	30
+   233  001F                     _ADCON0	set	31
+   234  0046                     _RD6	set	70
+   235  0047                     _RD7	set	71
+   236  009F                     _ADCON1	set	159
+   237  0081                     _OPTION_REG	set	129
+   238  0089                     _TRISE	set	137
+   239  0088                     _TRISD	set	136
+   240  0087                     _TRISC	set	135
+   241  0086                     _TRISB	set	134
+   242  0085                     _TRISA	set	133
+   243  0188                     _ANSEL	set	392
+   244  0189                     _ANSELH	set	393
+   245                           
+   246                           ; #config settings
+   247  0000                     
+   248                           	psect	cinit
+   249  07EE                     start_initialization:	
+   250  07EE                     __initialization:	
+   251                           
+   252                           ; Initialize objects allocated to BANK0
+   253  07EE  1383               	bcf	3,7	;select IRP bank0
+   254  07EF  3042               	movlw	low (__pdataBANK0+16)
+   255  07F0  00FD               	movwf	btemp+-1
+   256  07F1  3006               	movlw	high __pidataBANK0
+   257  07F2  00FE               	movwf	btemp
+   258  07F3  30C2               	movlw	low __pidataBANK0
+   259  07F4  00FF               	movwf	btemp+1
+   260  07F5  3032               	movlw	low __pdataBANK0
+   261  07F6  0084               	movwf	4
+   262  07F7  120A  118A  26D6  120A  118A  	fcall	init_ram0
+   263  07FC                     end_of_initialization:	
+   264                           ;End of C runtime variable initialization code
+   265                           
+   266  07FC                     __end_of__initialization:	
+   267  07FC  0183               	clrf	3
+   268  07FD  120A  118A  2F5A   	ljmp	_main	;jump to C main() function
+   269                           
+   270                           	psect	dataBANK0
+   271  0032                     __pdataBANK0:	
+   272  0032                     main@F1277:	
+   273  0032                     	ds	16
+   274                           
+   275                           	psect	inittext
+   276  06D2                     init_fetch0:	
+   277                           ;	Called with low address in FSR and high address in W
+   278                           
+   279  06D2  087E               	movf	btemp,w
+   280  06D3  008A               	movwf	10
+   281  06D4  087F               	movf	btemp+1,w
+   282  06D5  0082               	movwf	2
+   283  06D6                     init_ram0:	
+   284                           ;Called with:
+   285                           ;	high address of idata address in btemp 
+   286                           ;	low address of idata address in btemp+1 
+   287                           ;	low address of data in FSR
+   288                           ;	high address + 1 of data in btemp-1
+   289                           
+   290  06D6  120A  118A  26D2  120A  118A  	fcall	init_fetch0
+   291  06DB  0080               	movwf	0
+   292  06DC  0A84               	incf	4,f
+   293  06DD  0804               	movf	4,w
+   294  06DE  067D               	xorwf	btemp+-1,w
+   295  06DF  1903               	btfsc	3,2
+   296  06E0  3400               	retlw	0
+   297  06E1  0AFF               	incf	btemp+1,f
+   298  06E2  1903               	btfsc	3,2
+   299  06E3  0AFE               	incf	btemp,f
+   300  06E4  2ED6               	goto	init_ram0
+   301                           
+   302                           	psect	cstackCOMMON
+   303  0070                     __pcstackCOMMON:	
+   304  0070                     ?_ReadADC:	
+   305  0070                     ??_ReadADC:	
+   306                           ; 1 bytes @ 0x0
+   307                           
+   308  0070                     ?_ReadSw:	
+   309                           ; 1 bytes @ 0x0
+   310                           
+   311  0070                     ??_ReadSw:	
+   312                           ; 1 bytes @ 0x0
+   313                           
+   314  0070                     ?_SelectB:	
+   315                           ; 1 bytes @ 0x0
+   316                           
+   317  0070                     ?_main:	
+   318                           ; 1 bytes @ 0x0
+   319                           
+   320                           
+   321                           ; 2 bytes @ 0x0
+   322  0070                     	ds	2
+   323  0072                     ReadSw@tmp:	
+   324                           
+   325                           ; 1 bytes @ 0x2
+   326  0072                     	ds	1
+   327  0073                     ??_SelectB:	
+   328                           
+   329                           ; 1 bytes @ 0x3
+   330  0073                     	ds	3
+   331  0076                     SelectB@oldLEDs:	
+   332                           
+   333                           ; 1 bytes @ 0x6
+   334  0076                     	ds	1
+   335  0077                     SelectB@result:	
+   336                           
+   337                           ; 1 bytes @ 0x7
+   338  0077                     	ds	1
+   339  0078                     ??_main:	
+   340                           
+   341                           ; 1 bytes @ 0x8
+   342  0078                     	ds	4
+   343                           
+   344                           	psect	cstackBANK0
+   345  0020                     __pcstackBANK0:	
+   346  0020                     main@lut:	
+   347                           
+   348                           ; 16 bytes @ 0x0
+   349  0020                     	ds	16
+   350  0030                     main@tmp:	
+   351                           
+   352                           ; 1 bytes @ 0x10
+   353  0030                     	ds	1
+   354  0031                     main@tmp1:	
+   355                           
+   356                           ; 1 bytes @ 0x11
+   357  0031                     	ds	1
+   358                           
+   359                           	psect	maintext
+   360  075A                     __pmaintext:	
+   361 ;;
+   362 ;;Main: autosize = 0, tempsize = 4, incstack = 0, save=0
+   363 ;;
+   364 ;; *************** function _main *****************
+   365 ;; Defined at:
+   366 ;;		line 5 in file "main.c"
+   367 ;; Parameters:    Size  Location     Type
+   368 ;;		None
+   369 ;; Auto vars:     Size  Location     Type
+   370 ;;  lut            16    0[BANK0 ] unsigned char [16]
+   371 ;;  tmp1            1   17[BANK0 ] unsigned char 
+   372 ;;  tmp             1   16[BANK0 ] unsigned char 
+   373 ;; Return value:  Size  Location     Type
+   374 ;;                  2   69[None  ] int 
+   375 ;; Registers used:
+   376 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   377 ;; Tracked objects:
+   378 ;;		On entry : B00/0
+   379 ;;		On exit  : 0/0
+   380 ;;		Unchanged: 0/0
+   381 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   382 ;;      Params:         0       0       0       0       0
+   383 ;;      Locals:         0      18       0       0       0
+   384 ;;      Temps:          4       0       0       0       0
+   385 ;;      Totals:         4      18       0       0       0
+   386 ;;Total ram usage:       22 bytes
+   387 ;; Hardware stack levels required when called:    2
+   388 ;; This function calls:
+   389 ;;		_SelectB
+   390 ;; This function is called by:
+   391 ;;		Startup code after reset
+   392 ;; This function uses a non-reentrant model
+   393 ;;
+   394                           
+   395                           
+   396                           ;psect for function _main
+   397  075A                     _main:	
+   398  075A                     l875:	
+   399                           ;incstack = 0
+   400                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   401                           
+   402                           
+   403                           ;main.c: 8:  unsigned char tmp,tmp1;;main.c: 9:     unsigned char lut[]={
+   404  075A  3020               	movlw	main@lut& (0+255)
+   405  075B  0084               	movwf	4
+   406  075C  3032               	movlw	low main@F1277
+   407  075D  00F8               	movwf	??_main
+   408  075E  0804               	movf	4,w
+   409  075F  00F9               	movwf	??_main+1
+   410  0760  3010               	movlw	16
+   411  0761  00FA               	movwf	??_main+2
+   412  0762                     u110:	
+   413  0762  0878               	movf	??_main,w
+   414  0763  0084               	movwf	4
+   415  0764  1383               	bcf	3,7	;select IRP bank0
+   416  0765  0800               	movf	0,w
+   417  0766  00FB               	movwf	??_main+3
+   418  0767  0AF8               	incf	??_main,f
+   419  0768  0879               	movf	??_main+1,w
+   420  0769  0084               	movwf	4
+   421  076A  087B               	movf	??_main+3,w
+   422  076B  0080               	movwf	0
+   423  076C  0AF9               	incf	??_main+1,f
+   424  076D  0BFA               	decfsz	??_main+2,f
+   425  076E  2F62               	goto	u110
+   426  076F                     l877:	
+   427                           
+   428                           ;./init.c: 4:  PORTA=0; PORTB=0; PORTC=0; PORTD=0; PORTE=0;
+   429  076F  1283               	bcf	3,5	;RP0=0, select bank0
+   430  0770  1303               	bcf	3,6	;RP1=0, select bank0
+   431  0771  0185               	clrf	5	;volatile
+   432  0772                     l879:	
+   433  0772  0186               	clrf	6	;volatile
+   434  0773                     l881:	
+   435  0773  0187               	clrf	7	;volatile
+   436  0774                     l883:	
+   437  0774  0188               	clrf	8	;volatile
+   438  0775                     l885:	
+   439  0775  0189               	clrf	9	;volatile
+   440  0776                     l887:	
+   441                           
+   442                           ;./init.c: 7:  ANSELH= 0;
+   443  0776  1683               	bsf	3,5	;RP0=1, select bank3
+   444  0777  1703               	bsf	3,6	;RP1=1, select bank3
+   445  0778  0189               	clrf	9	;volatile
+   446  0779                     l889:	
+   447                           
+   448                           ;./init.c: 8:  ANSEL = 0b00000001;
+   449  0779  3001               	movlw	1
+   450  077A  0088               	movwf	8	;volatile
+   451  077B                     l891:	
+   452                           
+   453                           ;./init.c: 9:  TRISA = 0b00000001;
+   454  077B  3001               	movlw	1
+   455  077C  1683               	bsf	3,5	;RP0=1, select bank1
+   456  077D  1303               	bcf	3,6	;RP1=0, select bank1
+   457  077E  0085               	movwf	5	;volatile
+   458  077F                     l893:	
+   459                           
+   460                           ;./init.c: 12:  TRISB = 0b00000001;
+   461  077F  3001               	movlw	1
+   462  0780  0086               	movwf	6	;volatile
+   463  0781                     l895:	
+   464                           
+   465                           ;./init.c: 15:  TRISC=0; TRISD=0; TRISE=0b11111000;
+   466  0781  0187               	clrf	7	;volatile
+   467  0782                     l897:	
+   468  0782  0188               	clrf	8	;volatile
+   469  0783                     l899:	
+   470  0783  30F8               	movlw	248
+   471  0784  0089               	movwf	9	;volatile
+   472  0785                     l901:	
+   473                           
+   474                           ;./init.c: 18:  OPTION_REG = 0b00001000;
+   475  0785  3008               	movlw	8
+   476  0786  0081               	movwf	1	;volatile
+   477  0787                     l903:	
+   478                           
+   479                           ;./init.c: 21:  ADCON1 = 0;
+   480  0787  019F               	clrf	31	;volatile
+   481  0788                     l905:	
+   482                           
+   483                           ;./init.c: 22:  ADCON0 = 0b01000001;
+   484  0788  3041               	movlw	65
+   485  0789  1283               	bcf	3,5	;RP0=0, select bank0
+   486  078A  1303               	bcf	3,6	;RP1=0, select bank0
+   487  078B  009F               	movwf	31	;volatile
+   488  078C                     l907:	
+   489                           
+   490                           ;./init.c: 25:  PORTD = 0xFF;
+   491  078C  30FF               	movlw	255
+   492  078D  0088               	movwf	8	;volatile
+   493  078E                     l909:	
+   494                           
+   495                           ;./init.c: 26:  _delay((unsigned long)((300)*(4000000/4000.0)));
+   496  078E  3002               	movlw	2
+   497  078F  00FA               	movwf	??_main+2
+   498  0790  3086               	movlw	134
+   499  0791  00F9               	movwf	??_main+1
+   500  0792  3099               	movlw	153
+   501  0793  00F8               	movwf	??_main
+   502  0794                     u137:	
+   503  0794  0BF8               	decfsz	??_main,f
+   504  0795  2F94               	goto	u137
+   505  0796  0BF9               	decfsz	??_main+1,f
+   506  0797  2F94               	goto	u137
+   507  0798  0BFA               	decfsz	??_main+2,f
+   508  0799  2F94               	goto	u137
+   509  079A                     l911:	
+   510                           
+   511                           ;./init.c: 27:  PORTD = 0;
+   512  079A  1283               	bcf	3,5	;RP0=0, select bank0
+   513  079B  1303               	bcf	3,6	;RP1=0, select bank0
+   514  079C  0188               	clrf	8	;volatile
+   515  079D                     l913:	
+   516                           
+   517                           ;./init.c: 28:  _delay((unsigned long)((300)*(4000000/4000.0)));
+   518  079D  3002               	movlw	2
+   519  079E  00FA               	movwf	??_main+2
+   520  079F  3086               	movlw	134
+   521  07A0  00F9               	movwf	??_main+1
+   522  07A1  3099               	movlw	153
+   523  07A2  00F8               	movwf	??_main
+   524  07A3                     u147:	
+   525  07A3  0BF8               	decfsz	??_main,f
+   526  07A4  2FA3               	goto	u147
+   527  07A5  0BF9               	decfsz	??_main+1,f
+   528  07A6  2FA3               	goto	u147
+   529  07A7  0BFA               	decfsz	??_main+2,f
+   530  07A8  2FA3               	goto	u147
+   531  07A9                     l915:	
+   532                           
+   533                           ;main.c: 35:      RD7=1;
+   534  07A9  1283               	bcf	3,5	;RP0=0, select bank0
+   535  07AA  1303               	bcf	3,6	;RP1=0, select bank0
+   536  07AB  1788               	bsf	8,7	;volatile
+   537  07AC                     l917:	
+   538                           
+   539                           ;main.c: 36:         RD6=0;
+   540  07AC  1308               	bcf	8,6	;volatile
+   541  07AD                     l919:	
+   542                           
+   543                           ;main.c: 37:         tmp=SelectB();
+   544  07AD  120A  118A  2700  120A  118A  	fcall	_SelectB
+   545  07B2  00F8               	movwf	??_main
+   546  07B3  0878               	movf	??_main,w
+   547  07B4  1283               	bcf	3,5	;RP0=0, select bank0
+   548  07B5  1303               	bcf	3,6	;RP1=0, select bank0
+   549  07B6  00B0               	movwf	main@tmp
+   550  07B7                     l921:	
+   551                           
+   552                           ;main.c: 39:         RD7=0;
+   553  07B7  1388               	bcf	8,7	;volatile
+   554  07B8                     l923:	
+   555                           
+   556                           ;main.c: 40:         RD6=1;
+   557  07B8  1708               	bsf	8,6	;volatile
+   558  07B9                     l925:	
+   559                           
+   560                           ;main.c: 41:         tmp1=SelectB();
+   561  07B9  120A  118A  2700  120A  118A  	fcall	_SelectB
+   562  07BE  00F8               	movwf	??_main
+   563  07BF  0878               	movf	??_main,w
+   564  07C0  1283               	bcf	3,5	;RP0=0, select bank0
+   565  07C1  1303               	bcf	3,6	;RP1=0, select bank0
+   566  07C2  00B1               	movwf	main@tmp1
+   567  07C3                     l927:	
+   568                           
+   569                           ;main.c: 44:         tmp=tmp<<2;
+   570  07C3  0830               	movf	main@tmp,w
+   571  07C4  00F8               	movwf	??_main
+   572  07C5  3001               	movlw	1
+   573  07C6                     u125:	
+   574  07C6  1003               	clrc
+   575  07C7  0DF8               	rlf	??_main,f
+   576  07C8  3EFF               	addlw	-1
+   577  07C9  1D03               	skipz
+   578  07CA  2FC6               	goto	u125
+   579  07CB  1003               	clrc
+   580  07CC  0D78               	rlf	??_main,w
+   581  07CD  00F9               	movwf	??_main+1
+   582  07CE  0879               	movf	??_main+1,w
+   583  07CF  00B0               	movwf	main@tmp
+   584  07D0                     l929:	
+   585                           
+   586                           ;main.c: 45:         tmp1=tmp+tmp1;
+   587  07D0  0831               	movf	main@tmp1,w
+   588  07D1  0730               	addwf	main@tmp,w
+   589  07D2  00F8               	movwf	??_main
+   590  07D3  0878               	movf	??_main,w
+   591  07D4  00B1               	movwf	main@tmp1
+   592  07D5                     l931:	
+   593                           
+   594                           ;main.c: 46:         PORTD=lut[tmp1];
+   595  07D5  0831               	movf	main@tmp1,w
+   596  07D6  3E20               	addlw	(low (main@lut| 0))& (0+255)
+   597  07D7  0084               	movwf	4
+   598  07D8  1383               	bcf	3,7	;select IRP bank0
+   599  07D9  0800               	movf	0,w
+   600  07DA  0088               	movwf	8	;volatile
+   601  07DB                     l933:	
+   602                           
+   603                           ;main.c: 47:         RD7=1;
+   604  07DB  1788               	bsf	8,7	;volatile
+   605  07DC                     l935:	
+   606                           
+   607                           ;main.c: 48:         RD6=1;
+   608  07DC  1708               	bsf	8,6	;volatile
+   609  07DD                     l937:	
+   610                           
+   611                           ;main.c: 49:         _delay((unsigned long)((1500)*(4000000/4000.0)));
+   612  07DD  3008               	movlw	8
+   613  07DE  00FA               	movwf	??_main+2
+   614  07DF  309D               	movlw	157
+   615  07E0  00F9               	movwf	??_main+1
+   616  07E1  3005               	movlw	5
+   617  07E2  00F8               	movwf	??_main
+   618  07E3                     u157:	
+   619  07E3  0BF8               	decfsz	??_main,f
+   620  07E4  2FE3               	goto	u157
+   621  07E5  0BF9               	decfsz	??_main+1,f
+   622  07E6  2FE3               	goto	u157
+   623  07E7  0BFA               	decfsz	??_main+2,f
+   624  07E8  2FE3               	goto	u157
+   625  07E9  2FEA               	nop2
+   626  07EA  2FA9               	goto	l915
+   627  07EB  120A  118A  2800   	ljmp	start
+   628  07EE                     __end_of_main:	
+   629                           
+   630                           	psect	text1
+   631  0700                     __ptext1:	
+   632 ;; *************** function _SelectB *****************
+   633 ;; Defined at:
+   634 ;;		line 88 in file "./prologue.c"
+   635 ;; Parameters:    Size  Location     Type
+   636 ;;		None
+   637 ;; Auto vars:     Size  Location     Type
+   638 ;;  result          1    7[COMMON] unsigned char 
+   639 ;;  oldLEDs         1    6[COMMON] unsigned char 
+   640 ;; Return value:  Size  Location     Type
+   641 ;;                  1    wreg      unsigned char 
+   642 ;; Registers used:
+   643 ;;		wreg, status,2, status,0, pclath, cstack
+   644 ;; Tracked objects:
+   645 ;;		On entry : 0/0
+   646 ;;		On exit  : 0/0
+   647 ;;		Unchanged: 0/0
+   648 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   649 ;;      Params:         0       0       0       0       0
+   650 ;;      Locals:         2       0       0       0       0
+   651 ;;      Temps:          3       0       0       0       0
+   652 ;;      Totals:         5       0       0       0       0
+   653 ;;Total ram usage:        5 bytes
+   654 ;; Hardware stack levels used:    1
+   655 ;; Hardware stack levels required when called:    1
+   656 ;; This function calls:
+   657 ;;		_ReadADC
+   658 ;;		_ReadSw
+   659 ;; This function is called by:
+   660 ;;		_main
+   661 ;; This function uses a non-reentrant model
+   662 ;;
+   663                           
+   664                           
+   665                           ;psect for function _SelectB
+   666  0700                     _SelectB:	
+   667  0700                     l819:	
+   668                           ;incstack = 0
+   669                           ; Regs used in _SelectB: [wreg+status,2+status,0+pclath+cstack]
+   670                           
+   671                           
+   672                           ;./prologue.c: 89:  unsigned char oldLEDs, result;;./prologue.c: 90:  oldLEDs=PORTD;
+   673  0700  1283               	bcf	3,5	;RP0=0, select bank0
+   674  0701  1303               	bcf	3,6	;RP1=0, select bank0
+   675  0702  0808               	movf	8,w	;volatile
+   676  0703  00F3               	movwf	??_SelectB
+   677  0704  0873               	movf	??_SelectB,w
+   678  0705  00F6               	movwf	SelectB@oldLEDs
+   679                           
+   680                           ;./prologue.c: 91:  PORTD=0b00010000;
+   681  0706  3010               	movlw	16
+   682  0707  0088               	movwf	8	;volatile
+   683  0708                     l821:	
+   684                           
+   685                           ;./prologue.c: 94:   result = ReadADC();
+   686  0708  120A  118A  26B9  120A  118A  	fcall	_ReadADC
+   687  070D  00F3               	movwf	??_SelectB
+   688  070E  0873               	movf	??_SelectB,w
+   689  070F  00F7               	movwf	SelectB@result
+   690  0710                     l823:	
+   691                           
+   692                           ;./prologue.c: 95:   result >>= 6;
+   693  0710  0EF7               	swapf	SelectB@result,f
+   694  0711  0CF7               	rrf	SelectB@result,f
+   695  0712  0CF7               	rrf	SelectB@result,f
+   696  0713  3003               	movlw	3
+   697  0714  05F7               	andwf	SelectB@result,f
+   698  0715                     l825:	
+   699                           
+   700                           ;./prologue.c: 96:   PORTD = result | 0b00010000 | (oldLEDs & 0b11000000);
+   701  0715  0876               	movf	SelectB@oldLEDs,w
+   702  0716  39C0               	andlw	192
+   703  0717  0477               	iorwf	SelectB@result,w
+   704  0718  3810               	iorlw	16
+   705  0719  1283               	bcf	3,5	;RP0=0, select bank0
+   706  071A  1303               	bcf	3,6	;RP1=0, select bank0
+   707  071B  0088               	movwf	8	;volatile
+   708  071C                     l827:	
+   709                           
+   710                           ;./prologue.c: 97:  } while( ReadSw() );
+   711  071C  120A  118A  26E5  120A  118A  	fcall	_ReadSw
+   712  0721  3A00               	xorlw	0
+   713  0722  1D03               	skipz
+   714  0723  2F25               	goto	u91
+   715  0724  2F26               	goto	u90
+   716  0725                     u91:	
+   717  0725  2F08               	goto	l821
+   718  0726                     u90:	
+   719  0726                     l829:	
+   720                           
+   721                           ;./prologue.c: 99:  PORTD = 0; _delay((unsigned long)((300)*(4000000/4000.0)));
+   722  0726  1283               	bcf	3,5	;RP0=0, select bank0
+   723  0727  1303               	bcf	3,6	;RP1=0, select bank0
+   724  0728  0188               	clrf	8	;volatile
+   725  0729                     l831:	
+   726  0729  3002               	movlw	2
+   727  072A  00F5               	movwf	??_SelectB+2
+   728  072B  3086               	movlw	134
+   729  072C  00F4               	movwf	??_SelectB+1
+   730  072D  3099               	movlw	153
+   731  072E  00F3               	movwf	??_SelectB
+   732  072F                     u167:	
+   733  072F  0BF3               	decfsz	??_SelectB,f
+   734  0730  2F2F               	goto	u167
+   735  0731  0BF4               	decfsz	??_SelectB+1,f
+   736  0732  2F2F               	goto	u167
+   737  0733  0BF5               	decfsz	??_SelectB+2,f
+   738  0734  2F2F               	goto	u167
+   739  0735                     l833:	
+   740                           
+   741                           ;./prologue.c: 100:  PORTD = result; _delay((unsigned long)((400)*(4000000/4000.0)));
+   742  0735  0877               	movf	SelectB@result,w
+   743  0736  1283               	bcf	3,5	;RP0=0, select bank0
+   744  0737  1303               	bcf	3,6	;RP1=0, select bank0
+   745  0738  0088               	movwf	8	;volatile
+   746  0739                     l835:	
+   747  0739  3003               	movlw	3
+   748  073A  00F5               	movwf	??_SelectB+2
+   749  073B  3008               	movlw	8
+   750  073C  00F4               	movwf	??_SelectB+1
+   751  073D  3077               	movlw	119
+   752  073E  00F3               	movwf	??_SelectB
+   753  073F                     u177:	
+   754  073F  0BF3               	decfsz	??_SelectB,f
+   755  0740  2F3F               	goto	u177
+   756  0741  0BF4               	decfsz	??_SelectB+1,f
+   757  0742  2F3F               	goto	u177
+   758  0743  0BF5               	decfsz	??_SelectB+2,f
+   759  0744  2F3F               	goto	u177
+   760  0745                     l837:	
+   761                           
+   762                           ;./prologue.c: 101:  PORTD = 0; _delay((unsigned long)((300)*(4000000/4000.0)));
+   763  0745  1283               	bcf	3,5	;RP0=0, select bank0
+   764  0746  1303               	bcf	3,6	;RP1=0, select bank0
+   765  0747  0188               	clrf	8	;volatile
+   766  0748  3002               	movlw	2
+   767  0749  00F5               	movwf	??_SelectB+2
+   768  074A  3086               	movlw	134
+   769  074B  00F4               	movwf	??_SelectB+1
+   770  074C  3099               	movlw	153
+   771  074D  00F3               	movwf	??_SelectB
+   772  074E                     u187:	
+   773  074E  0BF3               	decfsz	??_SelectB,f
+   774  074F  2F4E               	goto	u187
+   775  0750  0BF4               	decfsz	??_SelectB+1,f
+   776  0751  2F4E               	goto	u187
+   777  0752  0BF5               	decfsz	??_SelectB+2,f
+   778  0753  2F4E               	goto	u187
+   779                           
+   780                           ;./prologue.c: 103:  PORTD=oldLEDs;
+   781  0754  0876               	movf	SelectB@oldLEDs,w
+   782  0755  1283               	bcf	3,5	;RP0=0, select bank0
+   783  0756  1303               	bcf	3,6	;RP1=0, select bank0
+   784  0757  0088               	movwf	8	;volatile
+   785                           
+   786                           ;./prologue.c: 104:  return result;
+   787  0758  0877               	movf	SelectB@result,w
+   788  0759                     l65:	
+   789  0759  0008               	return
+   790  075A                     __end_of_SelectB:	
+   791                           
+   792                           	psect	text2
+   793  06E5                     __ptext2:	
+   794 ;; *************** function _ReadSw *****************
+   795 ;; Defined at:
+   796 ;;		line 54 in file "./prologue.c"
+   797 ;; Parameters:    Size  Location     Type
+   798 ;;		None
+   799 ;; Auto vars:     Size  Location     Type
+   800 ;;  tmp             1    2[COMMON] unsigned char 
+   801 ;; Return value:  Size  Location     Type
+   802 ;;                  1    wreg      unsigned char 
+   803 ;; Registers used:
+   804 ;;		wreg, status,2
+   805 ;; Tracked objects:
+   806 ;;		On entry : 0/0
+   807 ;;		On exit  : 0/0
+   808 ;;		Unchanged: 0/0
+   809 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   810 ;;      Params:         0       0       0       0       0
+   811 ;;      Locals:         1       0       0       0       0
+   812 ;;      Temps:          2       0       0       0       0
+   813 ;;      Totals:         3       0       0       0       0
+   814 ;;Total ram usage:        3 bytes
+   815 ;; Hardware stack levels used:    1
+   816 ;; This function calls:
+   817 ;;		Nothing
+   818 ;; This function is called by:
+   819 ;;		_SelectB
+   820 ;;		_Select4
+   821 ;; This function uses a non-reentrant model
+   822 ;;
+   823                           
+   824                           
+   825                           ;psect for function _ReadSw
+   826  06E5                     _ReadSw:	
+   827  06E5                     l47:	
+   828                           ;incstack = 0
+   829                           ; Regs used in _ReadSw: [wreg+status,2]
+   830                           ;./prologue.c: 55:  unsigned char tmp;;./prologue.c: 56:  do {
+   831                           
+   832  06E5                     l809:	
+   833                           
+   834                           ;./prologue.c: 57:   tmp = PORTB & 0b00000001;
+   835  06E5  1283               	bcf	3,5	;RP0=0, select bank0
+   836  06E6  1303               	bcf	3,6	;RP1=0, select bank0
+   837  06E7  0806               	movf	6,w	;volatile
+   838  06E8  3901               	andlw	1
+   839  06E9  00F0               	movwf	??_ReadSw
+   840  06EA  0870               	movf	??_ReadSw,w
+   841  06EB  00F2               	movwf	ReadSw@tmp
+   842  06EC                     l811:	
+   843                           
+   844                           ;./prologue.c: 58:   _delay((unsigned long)((20)*(4000000/4000.0)));
+   845  06EC  301A               	movlw	26
+   846  06ED  00F1               	movwf	??_ReadSw+1
+   847  06EE  30F8               	movlw	248
+   848  06EF  00F0               	movwf	??_ReadSw
+   849  06F0                     u197:	
+   850  06F0  0BF0               	decfsz	??_ReadSw,f
+   851  06F1  2EF0               	goto	u197
+   852  06F2  0BF1               	decfsz	??_ReadSw+1,f
+   853  06F3  2EF0               	goto	u197
+   854  06F4  0000               	nop
+   855  06F5                     l813:	
+   856                           
+   857                           ;./prologue.c: 59:  } while( tmp != (PORTB & 0b00000001) );
+   858  06F5  1283               	bcf	3,5	;RP0=0, select bank0
+   859  06F6  1303               	bcf	3,6	;RP1=0, select bank0
+   860  06F7  0806               	movf	6,w	;volatile
+   861  06F8  3901               	andlw	1
+   862  06F9  0672               	xorwf	ReadSw@tmp,w
+   863  06FA  1D03               	skipz
+   864  06FB  2EFD               	goto	u81
+   865  06FC  2EFE               	goto	u80
+   866  06FD                     u81:	
+   867  06FD  2EE5               	goto	l47
+   868  06FE                     u80:	
+   869  06FE                     l815:	
+   870                           
+   871                           ;./prologue.c: 60:  return tmp;
+   872  06FE  0872               	movf	ReadSw@tmp,w
+   873  06FF                     l49:	
+   874  06FF  0008               	return
+   875  0700                     __end_of_ReadSw:	
+   876                           
+   877                           	psect	text3
+   878  06B9                     __ptext3:	
+   879 ;; *************** function _ReadADC *****************
+   880 ;; Defined at:
+   881 ;;		line 47 in file "./prologue.c"
+   882 ;; Parameters:    Size  Location     Type
+   883 ;;		None
+   884 ;; Auto vars:     Size  Location     Type
+   885 ;;		None
+   886 ;; Return value:  Size  Location     Type
+   887 ;;                  1    wreg      unsigned char 
+   888 ;; Registers used:
+   889 ;;		wreg
+   890 ;; Tracked objects:
+   891 ;;		On entry : 0/0
+   892 ;;		On exit  : 0/0
+   893 ;;		Unchanged: 0/0
+   894 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   895 ;;      Params:         0       0       0       0       0
+   896 ;;      Locals:         0       0       0       0       0
+   897 ;;      Temps:          0       0       0       0       0
+   898 ;;      Totals:         0       0       0       0       0
+   899 ;;Total ram usage:        0 bytes
+   900 ;; Hardware stack levels used:    1
+   901 ;; This function calls:
+   902 ;;		Nothing
+   903 ;; This function is called by:
+   904 ;;		_SelectB
+   905 ;;		_Select4
+   906 ;; This function uses a non-reentrant model
+   907 ;;
+   908                           
+   909                           
+   910                           ;psect for function _ReadADC
+   911  06B9                     _ReadADC:	
+   912  06B9                     l803:	
+   913                           ;incstack = 0
+   914                           ; Regs used in _ReadADC: [wreg]
+   915                           
+   916                           
+   917                           ;./prologue.c: 48:  ADCON0 |= 0b00000010;
+   918  06B9  1283               	bcf	3,5	;RP0=0, select bank0
+   919  06BA  1303               	bcf	3,6	;RP1=0, select bank0
+   920  06BB  149F               	bsf	31,1	;volatile
+   921  06BC                     l41:	
+   922                           ;./prologue.c: 49:  while ( (ADCON0 & 0b00000010) );
+   923                           
+   924  06BC  189F               	btfsc	31,1	;volatile
+   925  06BD  2EBF               	goto	u71
+   926  06BE  2EC0               	goto	u70
+   927  06BF                     u71:	
+   928  06BF  2EBC               	goto	l41
+   929  06C0                     u70:	
+   930  06C0                     l805:	
+   931                           
+   932                           ;./prologue.c: 50:  return ADRESH;
+   933  06C0  081E               	movf	30,w	;volatile
+   934  06C1                     l44:	
+   935  06C1  0008               	return
+   936  06C2                     __end_of_ReadADC:	
+   937  007E                     btemp	set	126	;btemp
+   938  007E                     wtemp0	set	126
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        16
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14     12      12
+    BANK0            80     18      34
+    BANK1            80      0       0
+    BANK3            96      0       0
+    BANK2            96      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    _main->_SelectB
+    _SelectB->_ReadSw
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                22    22      0     274
+                                              8 COMMON     4     4      0
+                                              0 BANK0     18    18      0
+                            _SelectB
+ ---------------------------------------------------------------------------------
+ (1) _SelectB                                              5     5      0     158
+                                              3 COMMON     5     5      0
+                            _ReadADC
+                             _ReadSw
+ ---------------------------------------------------------------------------------
+ (2) _ReadSw                                               3     3      0      45
+                                              0 COMMON     3     3      0
+ ---------------------------------------------------------------------------------
+ (2) _ReadADC                                              0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _SelectB
+     _ReadADC
+     _ReadSw
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BANK3               60      0       0       9        0.0%
+BITBANK3            60      0       0       8        0.0%
+SFR3                 0      0       0       4        0.0%
+BITSFR3              0      0       0       4        0.0%
+BANK2               60      0       0      11        0.0%
+BITBANK2            60      0       0      10        0.0%
+SFR2                 0      0       0       5        0.0%
+BITSFR2              0      0       0       5        0.0%
+BANK1               50      0       0       7        0.0%
+BITBANK1            50      0       0       6        0.0%
+SFR1                 0      0       0       2        0.0%
+BITSFR1              0      0       0       2        0.0%
+BANK0               50     12      22       5       42.5%
+BITBANK0            50      0       0       4        0.0%
+SFR0                 0      0       0       1        0.0%
+BITSFR0              0      0       0       1        0.0%
+COMMON               E      C       C       1       85.7%
+BITCOMMON            E      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+DATA                 0      0      2E      12        0.0%
+ABS                  0      0      2E       3        0.0%
+NULL                 0      0       0       0        0.0%
+STACK                0      0       0       2        0.0%
+EEDATA             100      0       0       0        0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.10 build 88905656 
+Symbol Table                                                                                   Tue May 05 02:00:19 2020
+
+                       pc 0002               __CFG_CP$OFF 0000                        l41 06BC  
+                      l44 06C1                        l47 06E5                        l49 06FF  
+                      l65 0759                        u70 06C0                        u71 06BF  
+                      u80 06FE                        u81 06FD                        u90 0726  
+                      u91 0725                        fsr 0004                       l803 06B9  
+                     l811 06EC                       l805 06C0                       l813 06F5  
+                     l821 0708                       l901 0785                       l815 06FE  
+                     l831 0729                       l823 0710                       l911 079A  
+                     l903 0787                       l809 06E5                       l833 0735  
+                     l825 0715                       l921 07B7                       l913 079D  
+                     l905 0788                       l835 0739                       l827 071C  
+                     l819 0700                       l931 07D5                       l923 07B8  
+                     l915 07A9                       l907 078C                       l837 0745  
+                     l829 0726                       l933 07DB                       l925 07B9  
+                     l917 07AC                       l909 078E                       l935 07DC  
+                     l927 07C3                       l919 07AD                       l937 07DD  
+                     l929 07D0                       l881 0773                       l891 077B  
+                     l883 0774                       l875 075A                       l893 077F  
+                     l885 0775                       l877 076F                       l895 0781  
+                     l887 0776                       l879 0772                       l897 0782  
+                     l889 0779                       l899 0783                       u110 0762  
+                     _RD6 0046                       _RD7 0047                       u125 07C6  
+                     u137 0794                       u147 07A3                       u157 07E3  
+                     u167 072F                       u177 073F              __CFG_CPD$OFF 0000  
+                     u187 074E                       u197 06F0                       fsr0 0004  
+                     indf 0000              __CFG_LVP$OFF 0000              __CFG_WRT$OFF 0000  
+                    _main 075A                      btemp 007E                      start 0000  
+           __CFG_IESO$OFF 0000             __CFG_MCLRE$ON 0000           __end_of_ReadADC 06C2  
+         __end_of_SelectB 075A                     ?_main 0070             __CFG_WDTE$OFF 0000  
+                   _ANSEL 0188                     _PORTA 0005                     _PORTB 0006  
+                   _PORTC 0007                     _PORTD 0008                     _PORTE 0009  
+                   _TRISA 0085                     _TRISB 0086                     _TRISC 0087  
+                   _TRISD 0088                     _TRISE 0089             __CFG_PWRTE$ON 0000  
+           SelectB@result 0077            __CFG_FCMEN$OFF 0000            __CFG_BOREN$OFF 0000  
+                   pclath 000A                     status 0003                     wtemp0 007E  
+         __initialization 07EE              __end_of_main 07EE                    ??_main 0078  
+                  _ADCON0 001F                    _ADCON1 009F                    _ADRESH 001E  
+                  _ANSELH 0189            SelectB@oldLEDs 0076                 ??_ReadADC 0070  
+                  _ReadSw 06E5                 ??_SelectB 0073   __end_of__initialization 07FC  
+          __pcstackCOMMON 0070              __pidataBANK0 06C2                   ?_ReadSw 0070  
+              __pmaintext 075A                   _ReadADC 06B9                   _SelectB 0700  
+         __size_of_ReadSw 001B                   __ptext1 0700                   __ptext2 06E5  
+                 __ptext3 06B9                   main@lut 0020                   main@tmp 0030  
+    end_of_initialization 07FC                 ReadSw@tmp 0072            __end_of_ReadSw 0700  
+     start_initialization 07EE  __CFG_FOSC$INTRC_NOCLKOUT 0000                  ??_ReadSw 0070  
+              init_fetch0 06D2               __pdataBANK0 0032                 ___latbits 0002  
+           __pcstackBANK0 0020                  ?_ReadADC 0070                  ?_SelectB 0070  
+               main@F1277 0032          __size_of_ReadADC 0009          __size_of_SelectB 005A  
+       __CFG_BOR4V$BOR21V 0000             __size_of_main 0094                  main@tmp1 0031  
+                init_ram0 06D6                _OPTION_REG 0081  

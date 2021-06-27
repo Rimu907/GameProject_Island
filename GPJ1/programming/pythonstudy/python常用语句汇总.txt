@@ -1,0 +1,54 @@
+# 交换变量
+a=1 b=2
+a,b = b,a
+
+# 字符串格式化
+a=1
+print(f'hi,+{a}')
+
+# yield
+def fibo(n):
+    a=0
+    b=1
+    nums=0
+    for _ in range(n):
+        yield a        #每计算一个就送出去
+        a,b=b,a+b
+    return nums
+for i in fibo(10):
+    print(i)
+    
+# 列表全字母改大小写,挑选开头筛出,首字母大写
+fruit = [x.upper() for x in fruit]
+new_fruit = [x for x in fruit if x.startwith('a')]
+fruit = [x.title() for x in fruit]
+
+# 顺序显示列表元素, 带序号按顺序显示
+for x in fruit:
+    print(x)
+for i,x in enumerate(fruit):
+    print(i,x)
+    
+#反向遍历列表元素
+for i,x in enumerate(reversed(fruit)):
+    print(i,x)
+
+#首字母排序列表
+for i,x in enumerate(sorted(fruit)):
+    print(i,x)
+    
+#合并字典
+a={'1':'2'}
+b={'4':'5'}
+c={**a,**b}
+
+#三元运算符
+s='pass' if score > 60 else 'fail'
+
+#字符串分割
+name = 'NANDI GUO'
+fame,lname = name.split()
+
+#文件打开
+with open('some file.txt','r') as f:
+    s=f.read()

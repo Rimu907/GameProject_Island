@@ -1,0 +1,49 @@
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+#include <signal.h>
+#include <QLabel>
+#include <QMessageBox>
+#include <stockitem.h>
+#include <edititemdialog.h>
+#include <stockitemlistmodel.h>
+MainWindow::MainWindow(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+    connect( ui->addButton, &QPushButton::released, this, &MainWindow::handleAddButton );
+    connect( this, &MainWindow::statusUpdateMessage, ui->statusBar, &QStatusBar::showMessage );
+
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+void MainWindow::handleAddButton()
+{
+
+}
+void MainWindow::handleEditButton()
+{
+
+}
+void MainWindow::on_addButton_released()
+{
+   emit statusUpdateMessage( QString("Add button was clicked"), 0 );
+}
+
+void MainWindow::on_editButton_released()
+{
+    emit statusUpdateMessage( QString("Edit button was clicked"), 0 );
+    EditItemDialog dialog( this );
+    StockItem item;
+    emit statusUpdateMessage( QString("Edit button was clicked"), 0 );
+    dialog.runDialog( item );
+}
+
+void MainWindow::on_pushButton_3_released()
+{
+    emit statusUpdateMessage( QString("Remove button was clicked"), 0 );
+}

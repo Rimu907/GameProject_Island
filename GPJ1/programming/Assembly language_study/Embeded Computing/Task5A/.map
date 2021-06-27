@@ -1,0 +1,126 @@
+MPLINK 5.09, LINKER
+Linker Map File - Created Mon May 04 11:54:47 2020
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                    V_RES       code   0x000000    program   0x000006
+                    V_INT       code   0x000004    program   0x000002
+                   .cinit    romdata   0x000005    program   0x000004
+                      ISR       code   0x000020    program   0x00009e
+                    .code       code   0x00006f    program   0x0000fe
+.config_2007_BUILD/DEFAULT/PRODUCTION/PROGRAM       code   0x002007    program   0x000002
+.config_2008_BUILD/DEFAULT/PRODUCTION/PROGRAM       code   0x002008    program   0x000002
+                      gr1      udata   0x000020       data   0x00000a
+                      gr3      udata   0x000070       data   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000002      
+                            0x000004    0x000006      
+                            0x000020    0x0000ed      
+                            0x002007    0x002008      
+            214 out of 8455 program addresses used, program memory utilization is 2%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                     D_L1   0x000078    program     static H:\task5\Task5A1\ECH_SUB.INC
+                     D_L2   0x000080    program     static H:\task5\Task5A1\ECH_SUB.INC
+                     D_L3   0x000085    program     static H:\task5\Task5A1\ECH_SUB.INC
+                     D_L4   0x000071    program     static H:\task5\Task5A1\ECH_SUB.INC
+                 DeBounce   0x00008f    program     static H:\task5\Task5A1\ECH_SUB.INC
+                   DelWds   0x000084    program     static H:\task5\Task5A1\ECH_SUB.INC
+                   DelWms   0x00007f    program     static H:\task5\Task5A1\ECH_SUB.INC
+                Del_100us   0x00006f    program     static H:\task5\Task5A1\ECH_SUB.INC
+                   Del_ms   0x000076    program     static H:\task5\Task5A1\ECH_SUB.INC
+                      ISR   0x000020    program     static H:\task5\Task5A1\PROGRAM.asm
+                    MLoop   0x00004a    program     static H:\task5\Task5A1\PROGRAM.asm
+                     Main   0x000021    program     static H:\task5\Task5A1\PROGRAM.asm
+                       P4   0x000063    program     static H:\task5\Task5A1\PROGRAM.asm
+                    RADC1   0x00008b    program     static H:\task5\Task5A1\ECH_SUB.INC
+                  ReadADC   0x00008a    program     static H:\task5\Task5A1\ECH_SUB.INC
+                     Sel0   0x0000a9    program     static H:\task5\Task5A1\ECH_SUB.INC
+                     Sel1   0x0000ac    program     static H:\task5\Task5A1\ECH_SUB.INC
+                     Sel2   0x0000b1    program     static H:\task5\Task5A1\ECH_SUB.INC
+                     Sel3   0x0000b4    program     static H:\task5\Task5A1\ECH_SUB.INC
+                   Sel4Rd   0x00009d    program     static H:\task5\Task5A1\ECH_SUB.INC
+                   SelBRd   0x0000ca    program     static H:\task5\Task5A1\ECH_SUB.INC
+                   SelBut   0x0000b6    program     static H:\task5\Task5A1\ECH_SUB.INC
+                    SelL2   0x0000cf    program     static H:\task5\Task5A1\ECH_SUB.INC
+                  SelMSB1   0x0000af    program     static H:\task5\Task5A1\ECH_SUB.INC
+                  Select4   0x00009b    program     static H:\task5\Task5A1\ECH_SUB.INC
+                  SelectB   0x0000c8    program     static H:\task5\Task5A1\ECH_SUB.INC
+                       lp   0x000067    program     static H:\task5\Task5A1\PROGRAM.asm
+                       p0   0x000057    program     static H:\task5\Task5A1\PROGRAM.asm
+                       p1   0x00005a    program     static H:\task5\Task5A1\PROGRAM.asm
+                       p2   0x00005d    program     static H:\task5\Task5A1\PROGRAM.asm
+                       p3   0x000060    program     static H:\task5\Task5A1\PROGRAM.asm
+                      Bop   0x000023       data     static H:\task5\Task5A1\VAR.inc 
+                   D_Ctr1   0x000024       data     static H:\task5\Task5A1\ECH_VAR.inc
+                   D_Ctr2   0x000025       data     static H:\task5\Task5A1\ECH_VAR.inc
+                   D_Ctr3   0x000026       data     static H:\task5\Task5A1\ECH_VAR.inc
+                    R_Old   0x000027       data     static H:\task5\Task5A1\ECH_VAR.inc
+                   ST_TMP   0x000071       data     static H:\task5\Task5A1\ECH_1.inc
+                    S_Tmp   0x000028       data     static H:\task5\Task5A1\ECH_VAR.inc
+                   S_Tmp1   0x000029       data     static H:\task5\Task5A1\ECH_VAR.inc
+                     Temp   0x000020       data     static H:\task5\Task5A1\VAR.inc 
+                    W_TMP   0x000070       data     static H:\task5\Task5A1\ECH_1.inc
+                        X   0x000021       data     static H:\task5\Task5A1\VAR.inc 
+                       it   0x000022       data     static H:\task5\Task5A1\VAR.inc 
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                      ISR   0x000020    program     static H:\task5\Task5A1\PROGRAM.asm
+                     Main   0x000021    program     static H:\task5\Task5A1\PROGRAM.asm
+                    MLoop   0x00004a    program     static H:\task5\Task5A1\PROGRAM.asm
+                       p0   0x000057    program     static H:\task5\Task5A1\PROGRAM.asm
+                       p1   0x00005a    program     static H:\task5\Task5A1\PROGRAM.asm
+                       p2   0x00005d    program     static H:\task5\Task5A1\PROGRAM.asm
+                       p3   0x000060    program     static H:\task5\Task5A1\PROGRAM.asm
+                       P4   0x000063    program     static H:\task5\Task5A1\PROGRAM.asm
+                       lp   0x000067    program     static H:\task5\Task5A1\PROGRAM.asm
+                Del_100us   0x00006f    program     static H:\task5\Task5A1\ECH_SUB.INC
+                     D_L4   0x000071    program     static H:\task5\Task5A1\ECH_SUB.INC
+                   Del_ms   0x000076    program     static H:\task5\Task5A1\ECH_SUB.INC
+                     D_L1   0x000078    program     static H:\task5\Task5A1\ECH_SUB.INC
+                   DelWms   0x00007f    program     static H:\task5\Task5A1\ECH_SUB.INC
+                     D_L2   0x000080    program     static H:\task5\Task5A1\ECH_SUB.INC
+                   DelWds   0x000084    program     static H:\task5\Task5A1\ECH_SUB.INC
+                     D_L3   0x000085    program     static H:\task5\Task5A1\ECH_SUB.INC
+                  ReadADC   0x00008a    program     static H:\task5\Task5A1\ECH_SUB.INC
+                    RADC1   0x00008b    program     static H:\task5\Task5A1\ECH_SUB.INC
+                 DeBounce   0x00008f    program     static H:\task5\Task5A1\ECH_SUB.INC
+                  Select4   0x00009b    program     static H:\task5\Task5A1\ECH_SUB.INC
+                   Sel4Rd   0x00009d    program     static H:\task5\Task5A1\ECH_SUB.INC
+                     Sel0   0x0000a9    program     static H:\task5\Task5A1\ECH_SUB.INC
+                     Sel1   0x0000ac    program     static H:\task5\Task5A1\ECH_SUB.INC
+                  SelMSB1   0x0000af    program     static H:\task5\Task5A1\ECH_SUB.INC
+                     Sel2   0x0000b1    program     static H:\task5\Task5A1\ECH_SUB.INC
+                     Sel3   0x0000b4    program     static H:\task5\Task5A1\ECH_SUB.INC
+                   SelBut   0x0000b6    program     static H:\task5\Task5A1\ECH_SUB.INC
+                  SelectB   0x0000c8    program     static H:\task5\Task5A1\ECH_SUB.INC
+                   SelBRd   0x0000ca    program     static H:\task5\Task5A1\ECH_SUB.INC
+                    SelL2   0x0000cf    program     static H:\task5\Task5A1\ECH_SUB.INC
+                     Temp   0x000020       data     static H:\task5\Task5A1\VAR.inc 
+                        X   0x000021       data     static H:\task5\Task5A1\VAR.inc 
+                       it   0x000022       data     static H:\task5\Task5A1\VAR.inc 
+                      Bop   0x000023       data     static H:\task5\Task5A1\VAR.inc 
+                   D_Ctr1   0x000024       data     static H:\task5\Task5A1\ECH_VAR.inc
+                   D_Ctr2   0x000025       data     static H:\task5\Task5A1\ECH_VAR.inc
+                   D_Ctr3   0x000026       data     static H:\task5\Task5A1\ECH_VAR.inc
+                    R_Old   0x000027       data     static H:\task5\Task5A1\ECH_VAR.inc
+                    S_Tmp   0x000028       data     static H:\task5\Task5A1\ECH_VAR.inc
+                   S_Tmp1   0x000029       data     static H:\task5\Task5A1\ECH_VAR.inc
+                    W_TMP   0x000070       data     static H:\task5\Task5A1\ECH_1.inc
+                   ST_TMP   0x000071       data     static H:\task5\Task5A1\ECH_1.inc
+
+

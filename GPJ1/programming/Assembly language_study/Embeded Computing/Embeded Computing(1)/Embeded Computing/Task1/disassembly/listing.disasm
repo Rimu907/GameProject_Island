@@ -1,0 +1,556 @@
+Disassembly Listing for Task1
+Generated From:
+C:/Users/eezral/owncloud/teaching/H63ECH/coursework/1718/RenameToYourID/Task1/dist/default/debug/Task1.debug.cof
+24-Oct-2017 00:09:52
+
+---  C:/Users/eezral/owncloud/teaching/H63ECH/coursework/1718/RenameToYourID/Task1/PROGRAM.asm  ---------
+                                                  1:     ; *** SOME INFORMATION AND INITIALISATION HERE ***   ;{
+                                                  2:     
+                                                  3:     ; operating BUILD CONFIGURATIONS drop down menu in the DEBUG toolbar
+                                                  4:     ; FOR SIMULATIONS with MPLAB SIM: select "Debug" this will switch off delays that take thousands of instructions
+                                                  5:     ; HARDWARE: select "Release" all delays will be on
+                                                  6:     
+                                                  7:     ; Provided code - do not edit  
+                                                  8:     ; This include setups up various configuration bits for the microcontroller
+                                                  9:     ; we are using, and importantly reserves space for variables.
+                                                  10:    ; If you need to use more variables, please place them in VAR.INC, which you
+                                                  11:    ; can find under the "Header Files" folder. The variables listed there will be
+                                                  12:    ; placed in the first memory bank.
+                                                  13:    ; This code has been provided for you to simplify your work, but you should be
+                                                  14:    ; aware that you cannot ignore it.
+                                                  15:    #include	ECH_1.inc
+                                                  16:    
+                                                  17:    ; Place your SUBROUTINE(S) (if any) here ...  
+                                                  18:    ;{ 
+006C  0009     RETFIE                             19:    ISR	retfie	; replace retfie with your ISR if necessary
+                                                  20:    
+006D  0782     ADDWF PCL, F                       21:    LUT     addwf   PCL,F 
+006E  340F     RETLW 0xF                          22:            retlw   B'00001111' 
+006F  340E     RETLW 0xE                          23:            retlw   B'00001110' 
+0070  340D     RETLW 0xD                          24:            retlw   B'00001101' 
+0071  340C     RETLW 0xC                          25:            retlw   B'00001100' 
+0072  340B     RETLW 0xB                          26:            retlw   B'00001011' 
+0073  340A     RETLW 0xA                          27:            retlw   B'00001010' 
+0074  3409     RETLW 0x9                          28:            retlw   B'00001001' 
+0075  3408     RETLW 0x8                          29:            retlw   B'00001000' 
+0076  3407     RETLW 0x7                          30:            retlw   B'00000111' 
+0077  3406     RETLW 0x6                          31:            retlw   B'00000110' 
+0078  3405     RETLW 0x5                          32:            retlw   B'00000101' 
+0079  3404     RETLW 0x4                          33:            retlw   B'00000100' 
+007A  3403     RETLW 0x3                          34:            retlw   B'00000011' 
+007B  3402     RETLW 0x2                          35:            retlw   B'00000010' 
+007C  3401     RETLW 0x1                          36:            retlw   B'00000001' 
+007D  3400     RETLW 0x0                          37:            retlw   B'00000000' 
+                                                  38:    
+                                                  39:    ;}
+                                                  40:    ; end of your subroutines
+                                                  41:    ; Provided code - do not edit  
+007E  0000     NOP                                42:    Main	nop
+                                                  43:    	
+                                                  44:    ; This include contains code that runs each time your board is turned on, such 
+                                                  45:    ; as configuring the pins, peripherals and flashing the LEDs. Read it to
+                                                  46:    ; understand what is going on.
+                                                  47:    #include ECH_INIT.inc
+                                                  48:    
+                                                  49:    ; Place your INITIALISATION code (if any) here ...   
+                                                  50:    ;{ ***		***************************************************
+                                                  51:    ; e.g.,		movwf	Ctr1 ; etc
+                                                  52:    
+                                                  53:    
+                                                  54:    ;} 
+                                                  55:    ; end of your initialisation
+                                                  56:    
+                                                  57:    
+00A3  0000     NOP                                58:    MLoop	nop
+                                                  59:    
+                                                  60:    ; place your superloop code here ...  
+                                                  61:    ;{
+                                                  62:    
+                                                  63:    	;	enter A
+00A4  1788     BSF PORTD, 0x7                     64:    	bsf	LEDs,LD7
+                                                  65:    	;call	SelectB
+                                                  66:    
+00A5  0088     MOVWF PORTD                        67:    	movwf	LEDs
+00A6  1388     BCF PORTD, 0x7                     68:    	bcf	LEDs,LD7
+                                                  69:    ;}	
+                                                  70:    ; end of your superloop code
+                                                  71:    
+00A7  28A3     GOTO 0xA3                          72:    	goto	MLoop
+                                                  73:    
+2007  0000     NOP                                74:    end
+---  C:/Users/eezral/owncloud/teaching/H63ECH/coursework/1718/RenameToYourID/Task1/ECH_SUB.INC  ---------
+1:             ; DO NOT EDIT ! ! !
+2:             
+3:             ; ECH_SUB.INC - subroutines supplied for
+4:             ; delay for 1 ms  (Del_ms)
+5:             ; delay for 1 ms  times W (DelWms)
+6:             ; delay for 0.1 s times W (DelWds)
+7:             
+8:             
+9:             #ifdef __DEBUG 	; to facilitate in-circuit debugging -
+10:            				; all delay subroutines return immediately as below
+11:            
+12:            Del_ms	return
+0005  0008     RETURN
+13:            DelWms	return
+0006  0008     RETURN
+14:            DelWds	return
+0007  0008     RETURN
+15:            
+16:            #else			; this is the code to provide the delays
+17:            
+18:            ; precise delay for 1 ms
+19:            ; uses	D_Ctr1
+20:            ; calls	nothing 
+21:            Del_ms	movlw 	D'248'	; value tuned at the debug stage
+22:            		movwf	D_Ctr1
+23:            D_L1	nop
+24:            		decfsz	D_Ctr1, F
+25:            		goto	D_L1
+26:            		nop
+27:            		nop
+28:            		nop
+29:            		return
+30:            ; not precise but approximate delay for W times 1 ms
+31:            ; uses	D_Ctr2
+32:            ; calls	Del_ms 
+33:            DelWms	movwf	D_Ctr2
+34:            D_L2	call	Del_ms
+35:            		decfsz	D_Ctr2, F
+36:            		goto 	D_L2
+37:            		return
+38:            ; not precise but approximate delay for W times 1 ds (0.1 s)
+39:            ; uses	D_Ctr3
+40:            ; calls	DelWms 
+41:            DelWds	movwf	D_Ctr3
+42:            D_L3	movlw	D'100'
+43:            		call	DelWms
+44:            		decfsz	D_Ctr3, F
+45:            		goto	D_L3
+46:            		return
+47:            
+48:            #endif
+49:            
+50:            
+51:            ; reading the ADC with the delay for conversion
+52:            ReadADC	bsf		ADCON0, GO_DONE		; strat the conversion
+0008  149F     BSF ADCON0, 0x1
+53:            RADC1	btfss	ADCON0, GO_DONE		; test the DONE bit
+0009  1C9F     BTFSS ADCON0, 0x1
+54:            		goto	RADC1				; if not set, test again
+000A  2809     GOTO 0x9
+55:            		movfw	ADRESH				; data ready => copy to W
+000B  081E     MOVF ADRESH, W
+56:            		return
+000C  0008     RETURN
+57:            
+58:            ; de-bouncing switches using a delay for 20 ms
+59:            ; uses	R_Old
+60:            ; calls	DelWms 
+61:            DeBounce
+62:            		movfw	PORTB			; copy SwPort to W
+000D  0806     MOVF PORTB, W
+63:            		andlw	B'00000001'		; mask unused bits (one bit is in use only)
+000E  3901     ANDLW 0x1
+64:            		movwf	R_Old			; save data to a work register
+000F  00A6     MOVWF R_Old
+65:            		movlw	D'20'
+0010  3014     MOVLW 0x14
+66:            		call	DelWms			; wait for 20 ms and read again
+0011  2006     CALL 0x6
+67:            		movfw	PORTB
+0012  0806     MOVF PORTB, W
+68:            		andlw	B'00000001'		
+0013  3901     ANDLW 0x1
+69:            		xorwf	R_Old,W			; compare with the old value
+0014  0626     XORWF R_Old, W
+70:            		btfss	STATUS,Z
+0015  1D03     BTFSS STATUS, 0x2
+71:            		goto	DeBounce		; if the value changed - do again
+0016  280D     GOTO 0xD
+72:            		movfw	R_Old			; reading is stable => return it
+0017  0826     MOVF R_Old, W
+73:            		return
+0018  0008     RETURN
+74:            
+75:            
+76:            ; selecting one option out of four
+77:            ; rotate the potentiometer to have the right LED on 
+78:            ; then press the button to confirm
+79:            ; LD4 is used to show that potentiometer input is on
+80:            Select4
+81:            		movfw	LEDs
+0019  0808     MOVF PORTD, W
+82:            		movwf	S_Tmp1		; LEDs -> Tmp1 to restore later
+001A  00A8     MOVWF S_Tmp1
+83:            
+84:            Sel4Rd	clrf	LEDs
+001B  0188     CLRF PORTD
+85:            		movfw	S_Tmp1
+001C  0828     MOVF S_Tmp1, W
+86:            		andlw	B'11000000'
+001D  39C0     ANDLW 0xC0
+87:            		movwf	LEDs		; restore 3 MSB of LEDs
+001E  0088     MOVWF PORTD
+88:            		bsf		LEDs,LD4	; indicator on
+001F  1608     BSF PORTD, 0x4
+89:            
+90:            ;		get the two MSBs of the ADC value
+91:            		call	ReadADC
+0020  2008     CALL 0x8
+92:            		andlw	B'11000000'	; mask unused bits
+0021  39C0     ANDLW 0xC0
+93:            		movwf	S_Tmp			; copy MSBs only
+0022  00A7     MOVWF S_Tmp
+94:            
+95:            ;		analyse two MSBs of the ADC value
+96:            		btfsc	S_Tmp, D'7'	; test bit 7
+0023  1BA7     BTFSC S_Tmp, 0x7
+97:            		goto	SelMSB1
+0024  282D     GOTO 0x2D
+98:            		btfsc	S_Tmp, D'6'	; test bit 6
+0025  1B27     BTFSC S_Tmp, 0x6
+99:            		goto	Sel1
+0026  282A     GOTO 0x2A
+100:           
+101:           Sel0	bsf		LEDs, LD0	; bits were 00
+0027  1408     BSF PORTD, 0x0
+102:           		movlw	B'00000001'	; choice 0 selected
+0028  3001     MOVLW 0x1
+103:           		goto	SelBut
+0029  2834     GOTO 0x34
+104:           			
+105:           Sel1	bsf		LEDs, LD1	; bits were 01
+002A  1488     BSF PORTD, 0x1
+106:           		movlw	B'00000010'	; choice 1 selected
+002B  3002     MOVLW 0x2
+107:           		goto	SelBut
+002C  2834     GOTO 0x34
+108:           
+109:           SelMSB1						; bit 7 was 1, test bit 6
+110:           		btfsc	S_Tmp, D'6'
+002D  1B27     BTFSC S_Tmp, 0x6
+111:           		goto	Sel3
+002E  2832     GOTO 0x32
+112:           
+113:           Sel2	bsf		LEDs, LD2	; bits were 10
+002F  1508     BSF PORTD, 0x2
+114:           		movlw	B'00000100'	; choice 2 selected
+0030  3004     MOVLW 0x4
+115:           		goto	SelBut
+0031  2834     GOTO 0x34
+116:           
+117:           Sel3	bsf		LEDs, LD3	; bits were 11
+0032  1588     BSF PORTD, 0x3
+118:           		movlw	B'00001000'	; choice 1 selected
+0033  3008     MOVLW 0x8
+119:           
+120:           SelBut	movwf	S_Tmp			; W is used in DeBounce
+0034  00A7     MOVWF S_Tmp
+121:           		call	DeBounce
+0035  200D     CALL 0xD
+122:           		skipPre
+0036  1806     BTFSC PORTB, 0x0
+123:           		goto	Sel4Rd		; no confirmation - start again
+0037  281B     GOTO 0x1B
+124:           
+125:           		clrf	LEDs		; blink the selection
+0038  0188     CLRF PORTD
+126:           		movlw	3
+0039  3003     MOVLW 0x3
+127:           		call	DelWds
+003A  2007     CALL 0x7
+128:           		movfw	S_Tmp
+003B  0827     MOVF S_Tmp, W
+129:           		movwf	LEDs
+003C  0088     MOVWF PORTD
+130:           		movlw	4
+003D  3004     MOVLW 0x4
+131:           		call	DelWds
+003E  2007     CALL 0x7
+132:           		clrf	LEDs
+003F  0188     CLRF PORTD
+133:           		movlw	3
+0040  3003     MOVLW 0x3
+134:           		call	DelWds
+0041  2007     CALL 0x7
+135:           
+136:           		movfw	S_Tmp1
+0042  0828     MOVF S_Tmp1, W
+137:           		movwf	LEDs		; Tmp1 -> LEDs restore before return
+0043  0088     MOVWF PORTD
+138:           
+139:           		movfw	S_Tmp			; return Sel4 in W
+0044  0827     MOVF S_Tmp, W
+140:           
+141:           		return
+0045  0008     RETURN
+142:           
+143:           ; selecting 2 bit binary value
+144:           ; rotate the potentiometer to have the right LED on 
+145:           ; then press the button to confirm
+146:           ; LD4 is used to show that potentiometer input is on
+147:           SelectB
+148:           		movfw	LEDs
+0046  0808     MOVF PORTD, W
+149:           		movwf	S_Tmp1		; LEDs -> Tmp1 to restore later
+0047  00A8     MOVWF S_Tmp1
+150:           
+151:           SelBRd	clrf	LEDs
+0048  0188     CLRF PORTD
+152:           		movfw	S_Tmp1
+0049  0828     MOVF S_Tmp1, W
+153:           		andlw	B'11000000'
+004A  39C0     ANDLW 0xC0
+154:           		movwf	LEDs		; restore 3 MSB of LEDs
+004B  0088     MOVWF PORTD
+155:           		bsf		LEDs,LD4	; indicator on
+004C  1608     BSF PORTD, 0x4
+156:           
+157:           ;		get the two MSBs of the ADC value
+158:           SelL2	call	ReadADC
+004D  2008     CALL 0x8
+159:           		andlw	B'11000000'	; mask unused bits
+004E  39C0     ANDLW 0xC0
+160:           		movwf	S_Tmp			; copy MSBs only
+004F  00A7     MOVWF S_Tmp
+161:           
+162:           ;		rotate MSBs to LSBs
+163:           		bcf		STATUS, C	; clear carry flag as it is used for rotation
+0050  1003     BCF STATUS, 0x0
+164:           		rrf		S_Tmp, F
+0051  0CA7     RRF S_Tmp, F
+165:           		rrf		S_Tmp, F
+0052  0CA7     RRF S_Tmp, F
+166:           		rrf		S_Tmp, F
+0053  0CA7     RRF S_Tmp, F
+167:           		rrf		S_Tmp, F
+0054  0CA7     RRF S_Tmp, F
+168:           		rrf		S_Tmp, F
+0055  0CA7     RRF S_Tmp, F
+169:           		rrf		S_Tmp, F
+0056  0CA7     RRF S_Tmp, F
+170:           
+171:           		movfw	LEDs
+0057  0808     MOVF PORTD, W
+172:           		andlw	B'11111100'
+0058  39FC     ANDLW 0xFC
+173:           		iorwf	S_Tmp,W
+0059  0427     IORWF S_Tmp, W
+174:           		movwf	LEDs
+005A  0088     MOVWF PORTD
+175:           
+176:           		call	DeBounce
+005B  200D     CALL 0xD
+177:           		skipPre
+005C  1806     BTFSC PORTB, 0x0
+178:           		goto	SelBRd		; loop here until the button is pressed 
+005D  2848     GOTO 0x48
+179:           
+180:           		clrf	LEDs		; blink the result
+005E  0188     CLRF PORTD
+181:           		movlw	3
+005F  3003     MOVLW 0x3
+182:           		call	DelWds
+0060  2007     CALL 0x7
+183:           		movfw	S_Tmp
+0061  0827     MOVF S_Tmp, W
+184:           		movwf	LEDs
+0062  0088     MOVWF PORTD
+185:           		movlw	4
+0063  3004     MOVLW 0x4
+186:           		call	DelWds
+0064  2007     CALL 0x7
+187:           		clrf	LEDs
+0065  0188     CLRF PORTD
+188:           		movlw	3
+0066  3003     MOVLW 0x3
+189:           		call	DelWds
+0067  2007     CALL 0x7
+190:           
+191:           		movfw	S_Tmp1
+0068  0828     MOVF S_Tmp1, W
+192:           		movwf	LEDs		; Tmp1 -> LEDs restore before return
+0069  0088     MOVWF PORTD
+193:           
+194:           		movfw	S_Tmp			; return Sel4 in W
+006A  0827     MOVF S_Tmp, W
+195:           
+196:           		return
+006B  0008     RETURN
+197:           		
+---  C:/Users/eezral/owncloud/teaching/H63ECH/coursework/1718/RenameToYourID/Task1/ECH_INIT.inc  --------
+1:             ; DO NOT EDIT ! ! !
+2:             
+3:             ; initialisation of the pins according to board wiring   
+4:             ;{
+5:             ; set all outputs to zero before configuring the pinsLEDs to off before configuring the pins
+6:             		clrf	PORTA
+007F  0185     CLRF PORTA
+7:             		clrf	PORTB
+0080  0186     CLRF PORTB
+8:             		clrf	PORTC
+0081  0187     CLRF PORTC
+9:             		clrf	PORTD
+0082  0188     CLRF PORTD
+10:            		clrf	PORTE
+0083  0189     CLRF PORTE
+11:            
+12:            		banksel	ANSELH			; switch to bank 4
+0084  1683     BSF STATUS, 0x5
+0085  1703     BSF STATUS, 0x6
+13:            
+14:            ; disable analogue inputs except for RA0
+15:            		clrf	ANSELH
+0086  0189     CLRF PORTE
+16:            		movlw	B'00000001'
+0087  3001     MOVLW 0x1
+17:            		movwf	ANSEL
+0088  0088     MOVWF PORTD
+18:            
+19:            		banksel	TRISA			; switch to bank 1
+0089  1683     BSF STATUS, 0x5
+008A  1303     BCF STATUS, 0x6
+20:            
+21:            ; init unused pins for PORTA (outputs)
+22:            		movlw	B'00000001'	; this constant was in W already, shown here for clarity
+008B  3001     MOVLW 0x1
+23:            		movwf	TRISA
+008C  0085     MOVWF PORTA
+24:            
+25:            ; init PORTB (RB0 for input, unused pins for output)
+26:            		movlw	B'00000001'	; this constant was in W already, shown here for clarity
+008D  3001     MOVLW 0x1
+27:            		movwf	TRISB
+008E  0086     MOVWF PORTB
+28:            
+29:            ; init PORTC (all pins unused - for output)
+30:            		movlw	B'00000000'	; this constant was in W already, shown here for clarity
+008F  3000     MOVLW 0x0
+31:            		movwf	TRISC
+0090  0087     MOVWF PORTC
+32:            
+33:            ; init LEDs (PORTD to outputs)
+34:            		clrf	TRISD
+0091  0188     CLRF PORTD
+35:            
+36:            ; init PORTE (four pins present, RE3 is MCLR anyway; all outputs for simplicity)
+37:            		movlw	B'11111000'	
+0092  30F8     MOVLW 0xF8
+38:            		movwf	TRISE
+0093  0089     MOVWF PORTE
+39:            
+40:            ; init the TMR0 keeping the two MSBs of OPTION_REG the same
+41:            		movfw	OPTION_REG
+0094  0801     MOVF TMR0, W
+42:            		andlw	B'00001000'		; prescaler to WDT to have Tcy clock for TMR0
+0095  3908     ANDLW 0x8
+43:                  	movwf   OPTION_REG       
+0096  0081     MOVWF TMR0
+44:            
+45:            ; init the ADC - need bank 0 and 1
+46:            		clrf	ADCON1		; Left justified, refernces: Vss and Vdd
+0097  019F     CLRF ADCON0
+47:            		banksel	PORTD		; switch back to bank 0
+0098  1283     BCF STATUS, 0x5
+0099  1303     BCF STATUS, 0x6
+48:            		movlw	B'01000001'	; Fosc/8, AN0, enable 
+009A  3041     MOVLW 0x41
+49:            		movwf	ADCON0
+009B  009F     MOVWF ADCON0
+50:            ;}
+51:            
+52:            ;	
+53:            ; blink LEDs for 0.3 s for testing   
+54:            ;{
+55:            		movlw	B'11111111'	; all LEDs ON
+009C  30FF     MOVLW 0xFF
+56:            		movwf	LEDs
+009D  0088     MOVWF PORTD
+57:            		movlw	D'3'		; delay
+009E  3003     MOVLW 0x3
+58:            		call	DelWds
+009F  2007     CALL 0x7
+59:            		clrf	LEDs		; all LEDs OFF
+00A0  0188     CLRF PORTD
+60:            		movlw	D'3'		; delay
+00A1  3003     MOVLW 0x3
+61:            		call	DelWds
+00A2  2007     CALL 0x7
+62:            ;}
+63:            ;
+64:            	
+---  C:/Users/eezral/owncloud/teaching/H63ECH/coursework/1718/RenameToYourID/Task1/ECH_1.inc  -----------
+1:             
+2:             ; ECH_1.inc - to be put before your SUBROUTINES		
+3:             
+4:             
+5:             ; DEFINITIONS related to the PIC and board used
+6:             ; DO NOT EDIT ! ! !
+7:             
+8:             
+9:             ; this #include enables use of register and bit names from the datasheet
+10:            ; consists of 
+11:            ; SymbolicName EQU NumericalValue   ; equates symbolic names to appropriate bit patterns
+12:            #include <p16F887.inc>
+13:            ; ! the name of the file should match the PIC microcontroller part name
+14:            
+15:            
+16:            ; setting the CONFIG1 configuration bits - required, explained at the end of the lecture course
+17:            	__CONFIG 	_CONFIG1, _INTOSCIO & _WDT_OFF & _PWRTE_ON & _MCLRE_ON & _CP_ON & _CPD_OFF & _BOR_OFF & _IESO_OFF & _FCMEN_OFF & _LVP_OFF & _DEBUG_ON
+18:            ;	configuration bits from the original Microchip code
+19:            ;	__CONFIG    _CONFIG1, _LVP_OFF & _FCMEN_OFF & _IESO_OFF & _BOR_OFF & _CPD_OFF & _CP_OFF & _MCLRE_OFF & _PWRTE_ON & _WDT_OFF & _INTRC_OSC_NOCLKOUT
+20:            ;
+21:            ; _INTOSCIO - use internal 4 MHz oscillator, RA6 and RA7 pins are used for I/O
+22:            ; _WDT_OFF - the watchdog timer is DISABLED and can be enabled by SWDTEN bit of the WDTCON register
+23:            ; _PWRTE_ON - power up timer - ENABLED
+24:            ; _MCLRE_ON - master clear pin function - ENABLED
+25:            ; _CP_OFF - program memory protection - DISABLED
+26:            ; _CPD_OFF - EEPROM protection - DISABLED
+27:            ; _BOR_OFF - brown out reset - DISABLED
+28:            ; _IESO_OFF - internal external oscillator switchover - DISABLED
+29:            ; _FCMEN_OFF - fail safe clock monitor - DISABLED
+30:            ; _LVP_OFF - low voltage programming - DISABLED
+31:            ; _DEBUG_ON - in circuit debugger - ENABLED, pins RB6 and RB7 are used by it
+32:            ; (these and all the other available options are specified in the p16F887.inc file
+33:            ; ! the best practice is to ALWAYS specify all the bits in the code
+34:            
+35:            ; setting the CONFIG2 configuration bits - required, explained at the end of the lecture course
+36:            	__CONFIG 	_CONFIG2, _WRT_OFF & _BOR21V
+37:            ;	as in the Microchip original code
+38:            ;
+39:            ; _WRT_OFF - program memory self write function - OFF
+40:            ; _BOR21V - brown out reset voltage set to 2.1 V (this feature is disabled anyway in CONFIG1 above)
+41:            
+42:            
+43:            #include		ECH_EQU.inc	; for EQU statements related to the 44 pin demo board wiring of PORTD and RB0
+44:            
+45:            
+46:            ; ALLOCATION of user RAM, starts where SFRs end at 0x20
+47:            gr1		udata		; GPRs for bank 1							
+48:            		include 	VAR.inc		; YOUR VARIABLES from this file
+49:            		include		ECH_VAR.inc	; variables required for subroutines
+50:            gr2		udata		; GPRs for bank 2 - none used
+51:            ; GPRs for banks 3 and 4 can be defined as above
+52:            gr3		udata_shr	; these variables will be put to the RAM shared among all the banks (last 16 GPRs)	
+53:            W_TMP	RES		1
+54:            ST_TMP	RES		1
+55:            
+56:            
+57:            ; CODE sections at different addresses
+58:            		; entry on reset - address 0x0 is fixed by PIC architecture
+59:            V_RES	CODE 	0x0
+60:            		NOP
+0000  0000     NOP
+61:            		goto	Main
+0001  287E     GOTO 0x7E
+62:            		; entry on interrupt - address 0x4 fixed by PIC architecture
+63:            V_INT	CODE	0x4
+64:            		goto	ISR
+0004  286C     GOTO 0x6C
+65:            		CODE    ; conventional placement of subroutines - before the INITIALISATION
+66:            
+67:            
+68:            ; subroutines prepared for the coursework
+69:            		include	ECH_SUB.INC
+70:            

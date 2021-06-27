@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="OpenCV-Template" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/OpenCV-AEE" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="pi2c.o" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/OpenCV-AEE" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-s" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="`opencv-config --cxxflags`" />
+			<Add option="`pkg-config --libs --cflags opencv`" />
+		</Compiler>
+		<Linker>
+			<Add option="`opencv-config --ldstaticflags`" />
+			<Add option="`pkg-config --libs --cflags opencv`" />
+			<Add option="-l wiringPi" />
+			<Add option="-l wiringPiDev" />
+		</Linker>
+		<Unit filename="lena.jpg" />
+		<Unit filename="main.cpp" />
+		<Unit filename="main.hpp" />
+		<Unit filename="opencv_aee.cpp" />
+		<Unit filename="opencv_aee.hpp" />
+		<Unit filename="pi2c.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
